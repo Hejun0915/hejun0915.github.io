@@ -7,7 +7,7 @@
   "citations": 488,
   "statisticsDate": "2026-09-23",
   "intro": "I build and study generative systems that can reason, create, and improve through feedback.",
-  "bio": "I'm a master's student in Surveying and Mapping Engineering at Sun Yat-sen University, advised by Prof. Xiang Zhang.",
+  "bio": "I'm a master's student in Surveying and Mapping Engineering at Sun Yat-sen University, advised by Prof. Xiang Zhang. I also work as an algorithm intern at Tencent WeChat.",
   "advisor": {
     "name": "Xiang Zhang",
     "url": "https://scholar.google.com/citations?user=uWsY6s8AAAAJ&hl=en"
@@ -18,6 +18,13 @@
     "Image Generation"
   ],
   "experience": [
+    {
+      "date": "2026.05 — Present",
+      "name": "Tencent WeChat",
+      "role": "Algorithm Intern",
+      "description": "Image generation, model evaluation and data-driven improvement.",
+      "logo": "assets/brand/wechat.svg"
+    },
     {
       "date": "2024 — Present",
       "name": "Sun Yat-sen University",
@@ -86,6 +93,14 @@
         },
         {
           "text": ": code-driven agentic image generation."
+        }
+      ]
+    },
+    {
+      "date": "2026-05",
+      "parts": [
+        {
+          "text": "Joined Tencent WeChat as an algorithm intern, working on image generation."
         }
       ]
     },

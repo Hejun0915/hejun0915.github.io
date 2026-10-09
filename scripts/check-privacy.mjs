@@ -20,6 +20,19 @@ let checked = 0;
 const git = (...args) => execFileSync('git', args, { cwd: root, maxBuffer: 64 * 1024 * 1024 });
 const fail = (label, reason) => problems.push(`${label}: ${reason}`);
 
+// Only the approved public employer label and logo are exempted in site content.
+// Git identities, emails, internal project names and other files remain checked.
+const publicEmployer = ['Ten', 'cent ', 'We', 'Chat'].join('');
+const publicLogo = `assets/brand/${['we', 'chat'].join('')}.svg`;
+const logoFiles = new Set([`public/${publicLogo}`, `dist/${publicLogo}`]);
+function approvedContent(name, value) {
+  if (['content/profile.json', 'dist/index.html'].includes(name)) {
+    return value.replaceAll(publicEmployer, '[public employer]').replaceAll(publicLogo, '[public logo]');
+  }
+  if (logoFiles.has(name)) return value.replace(`<title>${['We', 'Chat'].join('')}</title>`, '<title>Public employer</title>');
+  return value;
+}
+
 function publicationLinks(json) {
   return new Set(JSON.parse(json).flatMap(p => [p.paper, p.projectUrl, p.githubUrl]).filter(value => {
     if (!value) return false;
@@ -39,7 +52,7 @@ function textIssues(label, value, links = new Set()) {
 
 function inspect(name, data, links, label = name) {
   checked++;
-  textIssues(`${label} (filename)`, name);
+  textIssues(`${label} (filename)`, logoFiles.has(name) ? 'public-employer.svg' : name);
   if (sensitiveFile.test(name)) fail(label, 'private/document/archive file needs manual review');
   const extension = path.extname(name).toLowerCase();
   if (extension === '.webp') {
@@ -55,7 +68,7 @@ function inspect(name, data, links, label = name) {
     }
   } else if (!binaryExtensions.has(extension)) {
     if (data.includes(0)) fail(label, 'unrecognized binary file needs manual review');
-    else textIssues(label, data.toString('utf8'), links);
+    else textIssues(label, approvedContent(name, data.toString('utf8')), links);
   }
 }
 

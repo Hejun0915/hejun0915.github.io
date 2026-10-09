@@ -32,7 +32,7 @@ node scripts/test-preview.mjs
 - `scripts/`: build, preview, metrics and validation.
 - `.github/workflows/pages.yml`: build from `main`, publish only `dist/`.
 
-Only public academic information belongs in this repository. Public papers and their research/project/code links are retained; employer details, work email addresses, internal projects, local paths and private documents are excluded.
+Only public academic information belongs in this repository. Public papers and their research/project/code links are retained; the approved public internship entry (employer, role, dates, logo and general research focus) is also retained. Work email addresses, internal projects, local paths and private documents are excluded.
 
 Enable the local Git guards with `git config --local core.hooksPath .githooks`. The pre-commit hook checks the staged files and effective author/committer identity; the pre-push hook and Pages workflow also inspect reachable commit history. Keep an explicit personal `user.name` and `user.email` in this repository. The scanner checks known text patterns and WebP metadata; newly added images still need a visual review.
 
@@ -44,4 +44,4 @@ GitHub stars are refreshed from public APIs when available. Scholar citations us
 
 ## Asset attribution
 
-Publication illustrations belong to their respective authors and accompany the public research entries. The university logo represents the listed education. Pixel illustrations were generated for this site. Font licenses are included under `public/assets/fonts/`.
+Publication illustrations belong to their respective authors and accompany the public research entries. The institution logos represent the listed education and approved public internship. Pixel illustrations were generated for this site. Font licenses are included under `public/assets/fonts/`.

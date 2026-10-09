@@ -31,9 +31,19 @@ function write(name, text) { fs.writeFileSync(path.join(temporary, name), text);
 try {
   fs.mkdirSync(path.join(temporary, 'scripts'));
   fs.mkdirSync(path.join(temporary, 'content'));
+  fs.mkdirSync(path.join(temporary, 'dist/assets/brand'), { recursive: true });
+  fs.mkdirSync(path.join(temporary, 'public/assets/brand'), { recursive: true });
   fs.copyFileSync(path.join(source, 'check-privacy.mjs'), path.join(temporary, 'scripts/check-privacy.mjs'));
   write('content/publications.json', JSON.stringify([{ paper: publicLink }]));
   write('index.html', `<a href="${publicLink}">Public paper</a>`);
+  const employer = ['Ten', 'cent ', 'We', 'Chat'].join('');
+  const logo = `assets/brand/${['we', 'chat'].join('')}.svg`;
+  const profile = { bio: `Algorithm intern at ${employer}.`, experience: [{ name: employer, logo }] };
+  write('content/profile.json', JSON.stringify(profile));
+  write('dist/index.html', `<h3>${employer}</h3><img src="${logo}">`);
+  for (const directory of ['public', 'dist']) {
+    write(`${directory}/${logo}`, `<svg><title>${['We', 'Chat'].join('')}</title></svg>`);
+  }
   git('init', '-q', '-b', 'main');
   git('config', 'user.name', 'Public Author');
   git('config', 'user.email', 'author@example.org');
@@ -41,6 +51,19 @@ try {
   check(['--staged'], 0);
   git('commit', '-qm', 'Public source');
   check(['--history'], 0); // Public research links are allowed.
+
+  // Allowing a public internship must not exempt the rest of the same file.
+  write('content/profile.json', JSON.stringify({ ...profile, email: workEmail }));
+  check([], 1);
+  write('content/profile.json', JSON.stringify({ ...profile, project: ['WeGen', 'EditBench'].join('') }));
+  check([], 1);
+  write('content/profile.json', JSON.stringify(profile));
+  write('dist/index.html', `<h3>${employer}</h3><p>${workEmail}</p>`);
+  check([], 1);
+  write('dist/index.html', `<h3>${employer}</h3><img src="${logo}">`);
+  write('private-notes.txt', employer);
+  check([], 1); // Employer mentions outside approved site files are still reviewed.
+  fs.unlinkSync(path.join(temporary, 'private-notes.txt'));
 
   write('index.html', `Contact: ${workEmail}`);
   check([], 1);
