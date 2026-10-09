@@ -1,6 +1,6 @@
-:root{--wall-texture:url('assets/art/pixel-wall-noon.svg');--ray-haze:#9cb398;--ray-shell:#c8cda1;--ray-core:#fffde3;--ray-dust:#b5a36d;--haze-opacity:.11;--shell-opacity:.28;--core-opacity:.7}
-:root[data-theme="morning"]{--wall-texture:url('assets/art/pixel-wall-morning.svg');--ray-haze:#c29358;--ray-shell:#dfb66c;--ray-core:#fff5cb;--ray-dust:#c3964e;--haze-opacity:.14;--shell-opacity:.36;--core-opacity:.8}
-:root[data-theme="dusk"]{--wall-texture:url('assets/art/pixel-wall-dusk.svg');--ray-haze:#8a948b;--ray-shell:#ca956c;--ray-core:#ffe5bc;--ray-dust:#b68a64;--haze-opacity:.14;--shell-opacity:.34;--core-opacity:.76}
+:root{--wall-texture:url('assets/art/pixel-wall-noon.svg')}
+:root[data-theme="morning"]{--wall-texture:url('assets/art/pixel-wall-morning.svg')}
+:root[data-theme="dusk"]{--wall-texture:url('assets/art/pixel-wall-dusk.svg')}
 :root[data-theme="night"]{--wall-texture:url('assets/art/pixel-wall-night.svg')}
 
 /* The texture belongs to the document: scrolling exposes another part of the wall. */
@@ -12,12 +12,6 @@ body::before{content:'';position:absolute;inset:0;z-index:0;pointer-events:none;
 .hero{position:relative;isolation:isolate}
 .hero-copy,.hero-visual{position:relative;z-index:1}
 .hero-atmosphere{position:absolute;inset:0;width:100%;height:100%;overflow:hidden;pointer-events:none;z-index:0}
-.sun-rays{display:none}
-.ray-haze{fill:var(--ray-haze);opacity:var(--haze-opacity)}
-.ray-shell{fill:var(--ray-shell);opacity:var(--shell-opacity)}
-.ray-core{fill:var(--ray-core);opacity:var(--core-opacity)}
-.ray-dust{fill:var(--ray-dust);opacity:.62}
-:root[data-theme="morning"] .rays-morning,:root[data-theme="noon"] .rays-noon,:root[data-theme="dusk"] .rays-dusk{display:inline}
 .night-sparks{display:none;fill:#edce83}
 :root[data-theme="night"] .night-sparks{display:inline}
 .cool-spark{fill:#b5a6de}
