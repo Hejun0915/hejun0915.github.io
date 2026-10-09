@@ -35,21 +35,24 @@ const fmt = new Intl.NumberFormat('en-US');
 function validMetric(metric) {
   return metric && Number.isSafeInteger(metric.value) && metric.value >= 0 && Number.isFinite(Date.parse(metric.checkedAt));
 }
-function renderMetric(valueEl, dateEl, metric, label) {
+function renderMetric(valueEl, dateEl, metric, label, refresh) {
   if (!valueEl || !validMetric(metric)) return;
+  // A late response or an old CDN snapshot must not roll back a newer reading.
+  const previous = Number(valueEl.dataset.verifiedAt || 0);
+  if (Date.parse(metric.checkedAt) < previous) return;
+  valueEl.dataset.verifiedAt = String(Date.parse(metric.checkedAt));
   valueEl.textContent = fmt.format(metric.value);
   const date = new Date(metric.checkedAt);
-  const recent = metric.state === 'fresh';
-  const text = `${recent ? 'Updated' : 'Saved'} · ${date.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}`;
-  dateEl.textContent = text;
-  dateEl.title = `${label}: ${date.toLocaleString()}${recent ? '' : ' · Last successful reading; refresh unavailable.'}`;
+  if (!dateEl) return;
+  dateEl.textContent = `As of · ${date.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'})}`;
+  dateEl.title = `${label} · Last verified: ${date.toLocaleString()}${refresh?.status === 'unavailable' ? ' · Latest automatic refresh unavailable; showing the last verified value.' : ''}`;
 }
 function renderMetrics(data) {
-  renderMetric(document.querySelector('[data-metric="citations"]'),document.querySelector('[data-metric-date="citations"]'),data.citations,'Google Scholar');
+  renderMetric(document.querySelector('[data-metric="citations"]'),document.querySelector('[data-metric-date="citations"]'),data.citations,'Google Scholar',data.refresh?.sources?.citations);
   document.querySelectorAll('[data-repo]').forEach(el => {
     const repo = el.dataset.repo;
     const date = [...document.querySelectorAll('[data-repo-date]')].find(x=>x.dataset.repoDate===repo);
-    renderMetric(el,date,data.repositories?.[repo],'GitHub stars');
+    renderMetric(el,date,data.repositories?.[repo],'GitHub stars',data.refresh?.sources?.[repo]);
   });
 }
 async function json(url, timeout=20000) {
@@ -76,7 +79,16 @@ async function updateMetrics() {
     renderMetric(el,date,{value:data.stargazers_count,checkedAt:new Date().toISOString(),state:'fresh'},'GitHub stars');
   }));
 }
-updateMetrics();
+const metricsInterval = 5 * 60 * 1000;
+let metricsPending = null, metricsAttemptedAt = 0;
+function refreshVisibleMetrics() {
+  if (document.hidden || metricsPending || Date.now() - metricsAttemptedAt < metricsInterval) return;
+  metricsAttemptedAt = Date.now();
+  metricsPending = updateMetrics().catch(() => {}).finally(() => { metricsPending = null; });
+}
+refreshVisibleMetrics();
+setInterval(refreshVisibleMetrics, metricsInterval);
+document.addEventListener('visibilitychange', refreshVisibleMetrics);
 
 // Enlarge the real teaser, anchored to its right edge, without reflowing the row.
 // Restrict the hover treatment to a fine pointer; touch keeps the readable layout.

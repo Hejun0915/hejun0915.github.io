@@ -66,7 +66,9 @@ env -u GIT_ASKPASS -u SSH_ASKPASS -u VSCODE_GIT_IPC_HANDLE git push -u origin ma
 
 ## 统计与域名
 
-Pages 托管静态文件，不运行本地的 `/api/metrics` 服务。工作流定时尝试刷新公开统计；上游阻断或限流时保留最后成功的值与时间，不保证 Scholar 实时更新。
+Pages 托管静态文件，不运行本地的 `/api/metrics` 服务。工作流定时尝试刷新公开统计；上游阻断或限流时保留最后成功的值与时间，不保证 Scholar 实时更新。页面的 `As of` 表示真正读到该数字的时间，刷新失败不会把日期改成今天。更新失败的来源和原因可在 Actions 的 Public statistics 摘要中查看；已打开的前台页面每 5 分钟重读已发布的统计。
+
+若云端无法访问 Scholar，但本地可以访问，可运行 `npm run refresh:metrics`，审核后提交 `content/metrics-snapshot.json` 并推送。旧 CI 缓存不会覆盖这份较新的实测数据。
 
 免费地址无需购买域名。自购域名可在 Pages 设置中验证所有权、配置 Custom domain、DNS 和 HTTPS。
 

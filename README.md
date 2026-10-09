@@ -40,7 +40,9 @@ Enable the local Git guards with `git config --local core.hooksPath .githooks`. 
 
 Use the standalone repository `Hejun0915/hejun0915.github.io` and select **Settings → Pages → Source: GitHub Actions**. A push to `main` builds and publishes the site; a separate `gh-pages` branch is unnecessary. See [the deployment guide](docs/GITHUB_PAGES.md).
 
-GitHub stars are refreshed from public APIs when available. Scholar citations use the published snapshot; the scheduled workflow attempts a daily refresh. Upstream blocking or rate limits preserve the last successful value and timestamp. No private API key is required.
+GitHub stars are refreshed from public APIs when available. Scholar citations use the published snapshot; the scheduled workflow attempts a daily refresh. The visible “As of” date is the last verified reading, not the latest deployment. Upstream blocking or rate limits preserve the last successful value and timestamp, and the workflow reports the failed source in its summary. Saved data, CI cache and the last published snapshot are merged by verification time so older caches cannot overwrite newer readings. Open, visible tabs check the published snapshot every five minutes. No private API key is required.
+
+To refresh from a local connection that can access Scholar, run `npm run refresh:metrics`, review `content/metrics-snapshot.json`, and commit that file before pushing. Only parsed public totals are saved; the Scholar page itself is not stored.
 
 ## Asset attribution
 
