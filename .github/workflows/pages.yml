@@ -1,0 +1,71 @@
+name: Publish homepage
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  schedule:
+    # Daily at 10:17 in China (02:17 UTC); GitHub may delay scheduled runs.
+    - cron: '17 2 * * *'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: github-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v6
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+      - uses: actions/setup-node@v7
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Check source and commit privacy
+        run: npm run check:privacy
+      - name: Restore last successful statistics
+        uses: actions/cache@v6
+        with:
+          path: .cache/metrics.json
+          key: homepage-metrics-v1-${{ github.run_id }}-${{ github.run_attempt }}
+          restore-keys: homepage-metrics-v1-
+      - name: Refresh public statistics
+        run: node scripts/metrics.mjs
+      - name: Build static homepage
+        run: npm run build
+        env:
+          DEPLOY_TARGET: github-pages
+      - name: Check assets and behavior
+        run: |
+          npm run check
+          npm run check:privacy
+          npm run test:privacy
+          npm run test:themes
+          node scripts/test-metrics.mjs
+          node scripts/test-preview.mjs
+      - name: Upload website
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

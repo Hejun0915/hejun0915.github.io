@@ -1,0 +1,183 @@
+{
+  "name": "Jun He",
+  "nameChinese": "贺骏",
+  "role": "M.Eng. student · Sun Yat-sen University",
+  "email": "hejun36@mail2.sysu.edu.cn",
+  "scholar": "https://scholar.google.com/citations?user=ktFT40UAAAAJ&hl=en",
+  "citations": 488,
+  "statisticsDate": "2026-09-23",
+  "intro": "I build and study generative systems that can reason, create, and improve through feedback.",
+  "bio": "I'm a master's student in Surveying and Mapping Engineering at Sun Yat-sen University, advised by Prof. Xiang Zhang.",
+  "advisor": {
+    "name": "Xiang Zhang",
+    "url": "https://scholar.google.com/citations?user=uWsY6s8AAAAJ&hl=en"
+  },
+  "interests": [
+    "Agentic Generation",
+    "Benchmark",
+    "Image Generation"
+  ],
+  "experience": [
+    {
+      "date": "2024 — Present",
+      "name": "Sun Yat-sen University",
+      "role": "Master of Engineering",
+      "description": "Surveying and Mapping Engineering · Advisor: Prof. Xiang Zhang",
+      "logo": "assets/brand/sysu.svg"
+    },
+    {
+      "date": "2020 — 2024",
+      "name": "Sun Yat-sen University",
+      "role": "Bachelor's Degree",
+      "description": "Undergraduate studies",
+      "logo": "assets/brand/sysu.svg"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Awesome Nano Banana Images",
+      "description": "A shared collection of image generation and editing examples, prompts and resources.",
+      "url": "https://github.com/PicoTrex/Awesome-Nano-Banana-images",
+      "kind": "Community collection",
+      "repo": "PicoTrex/Awesome-Nano-Banana-images",
+      "image": "assets/projects/nanobanana.webp"
+    },
+    {
+      "name": "PaperGallery",
+      "description": "A curated space for research figures, project pages and scientific visualization tools.",
+      "url": "https://longhz140516.github.io/PaperGallery/",
+      "kind": "Research resources",
+      "repo": "LongHZ140516/PaperGallery",
+      "image": "assets/projects/papergallery.webp"
+    }
+  ],
+  "metricsEndpoint": "api/metrics",
+  "news": [
+    {
+      "date": "2026-07",
+      "parts": [
+        {
+          "text": "Mind-Brush",
+          "type": "method",
+          "href": "#paper-mind-brush"
+        },
+        {
+          "text": " accepted to "
+        },
+        {
+          "text": "SIGGRAPH Asia 26",
+          "type": "venue"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "date": "2026-05",
+      "parts": [
+        {
+          "text": "Introducing "
+        },
+        {
+          "text": "GenClaw",
+          "type": "method",
+          "href": "#paper-genclaw"
+        },
+        {
+          "text": ": code-driven agentic image generation."
+        }
+      ]
+    },
+    {
+      "date": "2026-02",
+      "parts": [
+        {
+          "text": "UrbanFeel",
+          "type": "method",
+          "href": "#paper-urbanfeel"
+        },
+        {
+          "text": " accepted to "
+        },
+        {
+          "text": "ICLR 2026",
+          "type": "venue"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "date": "2026-02",
+      "parts": [
+        {
+          "text": "MajutsuCity",
+          "type": "method",
+          "href": "#paper-majutsucity"
+        },
+        {
+          "text": " accepted to "
+        },
+        {
+          "text": "CVPR 2026",
+          "type": "venue"
+        },
+        {
+          "text": "."
+        }
+      ]
+    },
+    {
+      "date": "2025-09",
+      "parts": [
+        {
+          "text": "BLINK-Twice",
+          "type": "method",
+          "href": "#paper-blink-twice"
+        },
+        {
+          "text": " accepted to "
+        },
+        {
+          "text": "NeurIPS 2025",
+          "type": "venue"
+        },
+        {
+          "text": " Datasets & Benchmarks."
+        }
+      ]
+    },
+    {
+      "date": "2025-08",
+      "parts": [
+        {
+          "text": "Echo-4o",
+          "type": "method",
+          "href": "#paper-echo-4o"
+        },
+        {
+          "text": " explores learning from synthetic images for better generation."
+        }
+      ]
+    },
+    {
+      "date": "2025-04",
+      "parts": [
+        {
+          "text": "Released "
+        },
+        {
+          "text": "GPT-ImgEval",
+          "type": "method",
+          "href": "#paper-gpt-imgeval"
+        },
+        {
+          "text": ", a diagnostic benchmark for image generation."
+        }
+      ]
+    }
+  ],
+  "github": "https://github.com/Hejun0915"
+}

@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en" data-theme="noon" data-theme-mode="auto">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Jun He (贺骏), M.Eng. student at Sun Yat-sen University. Agentic generation, benchmarks, and image generation.">
+  <meta name="theme-color" content="#2a5135">
+  <meta property="og:title" content="Jun He · Research & Selected Work">
+  <meta property="og:description" content="Agentic generation, benchmarks, and image generation. Selected publications and open-source work.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cpath fill='%237b5337' d='M4 4h24v24H4z'/%3E%3Cpath fill='%235aa541' d='M4 4h24v8H4z'/%3E%3Cpath fill='%23f5f5ef' d='M18 14h4v10H10v-4h4v2h4z'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/press-start-2p.ttf" as="font" type="font/ttf" crossorigin>
+  <link rel="preload" href="assets/fonts/fusion-pixel-12px-proportional-zh_hans.otf.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="themes.css">
+  <link rel="stylesheet" href="atmosphere.css">
+  <script src="theme.js"></script>
+  <title>Jun He · Research & Selected Work</title>
+  <script src="main.js" defer></script>
+</head>
+<body data-metrics-endpoint="{{METRICSENDPOINT}}">
+  <svg class="figure-filters" width="0" height="0" aria-hidden="true" focusable="false" xmlns="http://www.w3.org/2000/svg"><defs><filter id="paper-white-key" color-interpolation-filters="sRGB"><feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  -8 -8 -8 0 23.64" result="without-white"/><feComposite in="without-white" in2="SourceGraphic" operator="in"/></filter></defs></svg>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="grass-skyline"><div class="theme-controls" role="group" aria-label="Time of day theme. Select a theme; select it again to follow local time."><span id="theme-status"><time id="theme-clock">--:--</time><span id="theme-greeting">Hello There!</span></span><button type="button" data-theme-choice="morning" aria-pressed="false" aria-label="Preview morning theme"><svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 12h16v2H0zM4 9V7h2V5h4v2h2v2h-2V7H6v2zM7 0h2v3H7zM1 4h2v2H1zm12 0h2v2h-2zM1 9h2v2H1zm12 0h2v2h-2z"/></svg></button><button type="button" data-theme-choice="noon" aria-pressed="false" aria-label="Preview noon theme"><svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M5 4h6v1h1v6h-1v1H5v-1H4V5h1zM7 0h2v3H7zm0 13h2v3H7zM0 7h3v2H0zm13 0h3v2h-3zM1 1h2v2H1zm12 0h2v2h-2zM1 13h2v2H1zm12 0h2v2h-2z"/></svg></button><button type="button" data-theme-choice="dusk" aria-pressed="false" aria-label="Preview dusk theme"><svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 10h16v2H0zM2 14h12v2H2zM4 9V7h2V5h4v2h2v2h-2V7H6v2zM7 0h2v3H7zM1 4h2v2H1zm12 0h2v2h-2z"/></svg></button><button type="button" data-theme-choice="night" aria-pressed="false" aria-label="Preview night theme"><svg viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M6 0h4v2H8v2H6v5h2v2h5V9h2v4h-2v2H9v1H5v-1H3v-2H1V5h2V3h2V1h1zM13 2h2v1h1v2h-2v1h-1V4h-1V3h1z"/></svg></button></div></header><span id="theme-announcement" class="sr-only" role="status" aria-live="polite"></span>
+  <aside class="explorer" aria-label="Page navigation and reading progress">
+    <a class="explorer-mark" href="#about" aria-label="Jun He, back to introduction">JH</a>
+    <p class="explorer-title" aria-hidden="true">EXPLORE</p>
+    <nav id="navigation" aria-label="Chapters">
+      <a href="#about" class="active" aria-current="location"><svg class="chapter-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M5 1h6v2h2v6h-2v2H5V9H3V3h2zM3 12h10v2h2v2H1v-2h2z"/><path fill="var(--paper)" d="M5 5h2v2H5zm4 0h2v2H9z"/></svg><span class="chapter-number">01</span><span class="chapter-label">About</span></a>
+      <a href="#publications"><svg class="chapter-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 2h5v1h4V2h5v12h-5v1H6v-1H1z"/><path fill="var(--paper)" d="M3 4h3v1h1v7H3zm7 1h3v7H9V5z"/></svg><span class="chapter-number">02</span><span class="chapter-label">Research</span></a>
+      <a href="#experience"><svg class="chapter-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M5 1h6v2h2v2h3v9H0V5h3V3h2z"/><path fill="var(--paper)" d="M5 3h6v2H5zM2 7h12v2H2z"/><path d="M7 8h2v3H7z"/></svg><span class="chapter-number">03</span><span class="chapter-label">Journey</span></a>
+      <a href="#open-source"><svg class="chapter-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M4 3h2v2H4v2H2v2h2v2h2v2H4v-2H2V9H0V7h2V5h2zm6 0h2v2h2v2h2v2h-2v2h-2v2h-2v-2h2V9h2V7h-2V5h-2zM8 2h2v3H9v3H8v3H7v3H5v-3h1V8h1V5h1z"/></svg><span class="chapter-number">04</span><span class="chapter-label">Open source</span></a>
+    </nav>
+    <div class="reading-progress"><div class="progress-caption"><span>EXPLORED</span><output id="progress-text">0%</output></div><progress id="page-progress" value="0" max="100" aria-label="Page reading progress">0%</progress></div>
+  </aside>
+  <div class="page">
+  <main id="main">
+    <section class="shell hero" id="about" aria-labelledby="intro-title">
+      {{ATMOSPHERE}}
+      <div class="hero-copy">
+        <p class="overline"><svg class="section-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M5 1h6v2h2v6h-2v2H5V9H3V3h2zM3 12h10v2h2v2H1v-2h2z"/><path fill="var(--paper)" d="M5 5h2v2H5zm4 0h2v2H9z"/></svg>RESEARCHER / CREATOR</p>
+        <h1 id="intro-title"><span class="name-en">Jun He</span><span class="name-zh" lang="zh-CN">贺骏</span></h1>
+        <div class="hero-description">
+          <p class="hero-intro">{{INTRO}}</p>
+          <p class="bio">{{BIO}}</p>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="hero-links" aria-label="Contact and academic profile">
+          <a class="social-button" href="mailto:{{EMAIL}}"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 5h18v14H3zM3 5l9 8 9-8"/></svg><span>Email</span></a>
+          <a class="social-button" href="{{SCHOLAR}}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M2 8l10-5 10 5-10 5-10-5Zm4 2v7c4 3 8 3 12 0v-7m4-2v8"/></svg><span>Google Scholar</span></a>
+          <a class="social-button" href="{{GITHUB}}" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 6v-3.9c0-1.1-.4-1.9-1-2.4 3.3-.4 6.8-1.6 6.8-7.4a5.8 5.8 0 0 0-1.5-4 5.4 5.4 0 0 0-.1-4s-1.2-.4-4.1 1.5a14 14 0 0 0-7.2 0C5-.1 3.8.3 3.8.3a5.4 5.4 0 0 0-.1 4 5.8 5.8 0 0 0-1.5 4c0 5.8 3.5 7 6.8 7.4-.6.5-1 1.3-1 2.4V22" transform="translate(2 2) scale(.82)"/></svg><span>GitHub</span></a>
+        </div>
+        <figure class="hero-world">
+          <div class="world-label"><span>A WORLD IN PROGRESS</span><span id="world-time">DAY</span></div>
+          <div id="world-scene" class="world-scene" role="img" aria-label="A sunlit pixel-art floating island with a village, river, and mountains"></div>
+          <figcaption>Build. Reason. Imagine.</figcaption>
+        </figure>
+      </div>
+    </section>
+    <div class="shell research-line" aria-label="Research interests"><span class="small-label">CURRENT<br>EXPLORATIONS</span>{{INTERESTS}}</div>
+    <section class="shell news" aria-labelledby="news-title"><h2 id="news-title">Latest<span aria-hidden="true"> +</span></h2><div class="news-entries">{{NEWS}}</div></section>
+    <section class="publications-section shell" id="publications" aria-labelledby="publications-title">
+      <div class="section-heading publications-heading"><div><p class="section-index"><svg class="section-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M1 2h5v1h4V2h5v12h-5v1H6v-1H1z"/><path fill="var(--paper)" d="M3 4h3v1h1v7H3zm7 1h3v7H9V5z"/></svg><span class="section-number">02</span> / RESEARCH</p><h2 id="publications-title">Selected publications<span class="heading-pixel" aria-hidden="true"></span></h2><p class="section-description">Agents that create. Benchmarks that ask better questions.</p></div><div class="publication-overview"><a class="citation-note" href="{{SCHOLAR}}" target="_blank" rel="noopener noreferrer"><strong data-metric="citations">{{CITATIONS}}</strong><span>Google Scholar citations<small data-metric-date="citations">Snapshot · {{STATISTICSDATE}}</small></span><span aria-hidden="true">↗</span></a><a class="archive-link" href="{{SCHOLAR}}" target="_blank" rel="noopener noreferrer">All publications ↗</a></div></div>
+      <div class="publication-key"><span>Conference papers & technical reports</span><span>* Equal contribution · My name is underlined</span></div>
+      {{PUBLICATIONS}}
+    </section>
+    <section class="shell experience-section" id="experience" aria-labelledby="experience-title">
+      <div class="section-heading"><div><p class="section-index"><svg class="section-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M5 1h6v2h2v2h3v9H0V5h3V3h2z"/><path fill="var(--paper)" d="M5 3h6v2H5zM2 7h12v2H2z"/><path d="M7 8h2v3H7z"/></svg><span class="section-number">03</span> / THE JOURNEY</p><h2 id="experience-title">Education</h2></div><p class="section-aside">From ideas to practice.</p></div>
+      <div class="experience-list">{{EXPERIENCE}}</div>
+    </section>
+    <section class="open-source-section" id="open-source" aria-labelledby="open-source-title"><div class="shell">
+      <div class="section-heading"><div><p class="section-index"><svg class="section-icon" viewBox="0 0 16 16" fill="currentColor" shape-rendering="crispEdges" aria-hidden="true"><path d="M4 3h2v2H4v2H2v2h2v2h2v2H4v-2H2V9H0V7h2V5h2zm6 0h2v2h2v2h2v2h-2v2h-2v2h-2v-2h2V9h2V7h-2V5h-2zM8 2h2v3H9v3H8v3H7v3H5v-3h1V8h1V5h1z"/></svg><span class="section-number">04</span> / SHARED RESOURCES</p><h2 id="open-source-title">Beyond the Papers</h2><p class="section-description">Collaborative projects I contribute to, for others to explore and build on.</p></div></div>
+      <div class="project-list">{{PROJECTS}}</div>
+    </div></section>
+  </main>
+  <footer class="shell site-footer"><div><a class="footer-name" href="#about">Jun He<span aria-hidden="true">_</span></a><p>Always curious about what we can build next.</p></div><div class="footer-contact"><a href="mailto:{{EMAIL}}">{{EMAIL}} ↗</a><p><a href="{{SCHOLAR}}" target="_blank" rel="noopener noreferrer">Google Scholar</a> · <a href="#about">Back to the surface ↑</a></p></div></footer>
+  </div>
+</body>
+</html>

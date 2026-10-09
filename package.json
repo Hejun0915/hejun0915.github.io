@@ -1,0 +1,20 @@
+{
+  "name": "jun-he-academic-homepage",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jun He's pixel-inspired academic homepage",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "dev": "node scripts/dev.mjs",
+    "start": "node scripts/dev.mjs",
+    "check": "node scripts/check.mjs",
+    "test:themes": "node scripts/test-themes.mjs",
+    "refresh:metrics": "node scripts/metrics.mjs && node scripts/build.mjs",
+    "check:privacy": "node scripts/check-privacy.mjs --history",
+    "test:privacy": "node scripts/test-privacy.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
