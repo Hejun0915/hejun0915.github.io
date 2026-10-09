@@ -5,28 +5,28 @@
   --paper:#f5f5ef;--ink:#26382c;--muted:#606b5b;--green:#285638;--grass:#88a96b;--accent:#965130;--line:#d5dacd;
   --surface:#e9eddf;--raised:#f8f8f1;--tint:#e3ecd7;--border:#a6b995;--shadow:#d3ddc5;--deep-shadow:#779466;--selection:#d6e7b7;
   --accent-bg:#ebe1d2;--preview-shadow:#203c1820;--logo-bg:transparent;--image-blend:multiply;--texture-shade:#34502514;
-  --world-image:url('assets/art/themes/world-noon.webp');--block-texture:url('assets/art/grass-terrain.webp');--block-size:360px 120px;--block-edge:#786446;
+  --world-image:url('assets/art/themes/world-elysia-noon.png');--block-texture:url('assets/art/grass-terrain.webp');--block-size:360px 120px;--block-edge:#786446;
 }
 :root[data-theme="morning"]{
   color-scheme:light;
   --paper:#f6f0e5;--ink:#44362d;--muted:#736153;--green:#86512f;--grass:#bf9764;--accent:#8c512f;--line:#e1d3bf;
   --surface:#efe4d2;--raised:#fbf5e9;--tint:#ecd9b9;--border:#c7ac80;--shadow:#e3d2b3;--deep-shadow:#b5956b;--selection:#e9cd9d;
   --accent-bg:#ecddc8;--preview-shadow:#5c3f2020;--logo-bg:transparent;--image-blend:multiply;--texture-shade:#68432a12;
-  --world-image:url('assets/art/themes/world-morning.webp');--block-texture:url('assets/art/themes/glowstone.webp');--block-size:240px 80px;--block-edge:#b69a68;
+  --world-image:url('assets/art/themes/world-elysia-morning.png');--block-texture:url('assets/art/themes/glowstone.webp');--block-size:240px 80px;--block-edge:#b69a68;
 }
 :root[data-theme="dusk"]{
   color-scheme:light;
   --paper:#e9eeeb;--ink:#293e3b;--muted:#566862;--green:#3b625e;--grass:#91aaa0;--accent:#805136;--line:#c6d5cd;
   --surface:#dfe7e1;--raised:#f0f3ec;--tint:#d1dfd6;--border:#9cb5aa;--shadow:#c6d8cd;--deep-shadow:#73988c;--selection:#c5d9cc;
   --accent-bg:#e6dbca;--preview-shadow:#173f3925;--logo-bg:transparent;--image-blend:multiply;--texture-shade:#28453e25;
-  --world-image:url('assets/art/themes/world-dusk.webp');--block-texture:url('assets/art/themes/autumn-leaves.webp');--block-size:240px 80px;--block-edge:#83624e;
+  --world-image:url('assets/art/themes/world-elysia-dusk.png');--block-texture:url('assets/art/themes/autumn-leaves.webp');--block-size:240px 80px;--block-edge:#83624e;
 }
 :root[data-theme="night"]{
   color-scheme:dark;
   --paper:#191721;--ink:#e5e0ed;--muted:#afa5be;--green:#b4a2cd;--grass:#837596;--accent:#d7ae80;--line:#3b344a;
   --surface:#201c2b;--raised:#292234;--tint:#342c43;--border:#655574;--shadow:#302739;--deep-shadow:#645173;--selection:#51425f;
   --accent-bg:#3e302b;--preview-shadow:#00000066;--logo-bg:#e9ebe4;--image-blend:normal;--texture-shade:#15121f35;
-  --world-image:url('assets/art/themes/world-night.webp');--block-texture:url('assets/art/themes/obsidian.webp');--block-size:240px 80px;--block-edge:#40334e;
+  --world-image:url('assets/art/themes/world-elysia-night.png');--block-texture:url('assets/art/themes/obsidian.webp');--block-size:240px 80px;--block-edge:#40334e;
 }
 body,.open-source-section,.project,.explorer,.social-button{transition:background-color .35s,color .35s,border-color .35s}
 ::selection{background:var(--selection);color:var(--ink)}

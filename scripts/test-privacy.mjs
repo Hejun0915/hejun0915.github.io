@@ -87,6 +87,24 @@ try {
   check([], 1);
   fs.unlinkSync(path.join(temporary, 'image.webp'));
 
+  const png = Buffer.from('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mNk+A8AAQUBAScY42YAAAAASUVORK5CYII=', 'base64');
+  write('image.png', png);
+  check([], 0); // Transparent PNG assets are accepted without weakening metadata checks.
+  write('image.png', png.subarray(0, png.length - 3));
+  assert.match(check([], 1).stderr, /PNG/);
+  write('image.png', Buffer.concat([png, Buffer.from(workEmail)]));
+  assert.match(check([], 1).stderr, /PNG ending/);
+  for (const kind of ['tEXt', 'zTXt', 'iTXt', 'eXIf', 'caBX']) {
+    const payload = Buffer.from(workEmail);
+    const metadata = Buffer.alloc(payload.length + 12);
+    metadata.writeUInt32BE(payload.length);
+    metadata.write(kind, 4);
+    payload.copy(metadata, 8);
+    write('image.png', Buffer.concat([png.subarray(0, -12), metadata, png.subarray(-12)]));
+    check([], 1); // Text, EXIF and ancillary provenance cannot hide a private identity.
+  }
+  fs.unlinkSync(path.join(temporary, 'image.png'));
+
   const commit = run('git', ['commit', '--allow-empty', '-qm', 'Fixture with wrong identity'], { GIT_COMMITTER_EMAIL: workEmail });
   assert.equal(commit.status, 0);
   git('commit', '--allow-empty', '-qm', 'Clean later commit');

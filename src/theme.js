@@ -2,10 +2,10 @@
 (function (global) {
   'use strict';
   const THEMES = Object.freeze({
-    morning: { label: 'Morning', hours: '05:00–10:59', color: '#945c37', description: 'Warm morning light falls from the left across the pixel-art island and village.' },
-    noon: { label: 'Day', hours: '11:00–16:59', color: '#285638', description: 'Soft midday sunlight illuminates the pixel-art island, village, river, and mountains.' },
-    dusk: { label: 'Dusk', hours: '17:00–19:59', color: '#406c69', description: 'Copper sunset light falls from the right over the island, with long cool evening shadows.' },
-    night: { label: 'Night', hours: '20:00–04:59', color: '#b1a0d0', description: 'The pixel-art island at night, with warm light spilling from village windows onto the paths.' }
+    morning: { label: 'Morning', hours: '05:00–10:59', color: '#945c37', description: 'Warm morning light falls from the left across a pixel-art island, with four little Elysias enjoying the bridge, tending crops, stretching, and carrying flowers.' },
+    noon: { label: 'Day', hours: '11:00–16:59', color: '#285638', description: 'Soft midday sunlight illuminates a pixel-art island, with four little Elysias sightseeing on the bridge, watering crops, reading under a tree, and carrying flowers.' },
+    dusk: { label: 'Dusk', hours: '17:00–19:59', color: '#406c69', description: 'Copper sunset light falls from the right across a pixel-art island, with four little Elysias watching the sunset, harvesting crops, fishing, and returning to the castle.' },
+    night: { label: 'Night', hours: '20:00–04:59', color: '#b1a0d0', description: 'The pixel-art island at night, with glowing village windows and four little Elysias carrying a lantern, watching fireflies, stargazing, and reading by the castle.' }
   });
   const GREETINGS = Object.freeze({
     morning: ['Good Morning!', 'Rise and Shine!', 'Hello, Sunshine!', 'Hello, New Day!'],

@@ -13,7 +13,7 @@ const privateTerms = new RegExp([
 const credentials = /(?:gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{40,}|sk-[A-Za-z0-9_-]{32,}|AKIA[0-9A-Z]{16}|-----BEGIN (?:RSA |OPENSSH |EC )?PRIVATE KEY-----)/;
 const localPaths = /(?:file:\/\/\/|\/Users\/[^\s/]+\/|\/home\/[^\s/]+\/|[A-Z]:\\Users\\)/i;
 const sensitiveFile = /(?:^|\/)(?:\.env(?:\..*)?|id_rsa|id_ed25519|\.DS_Store)$|\.(?:pem|key|p12|pfx|pdf|docx?|pptx?|xlsx?|zip|tar|gz|bak|backup|log)$/i;
-const binaryExtensions = new Set(['.webp', '.ttf', '.woff2']);
+const binaryExtensions = new Set(['.webp', '.png', '.ttf', '.woff2']);
 const skippedDirectories = new Set(['.git', 'node_modules', '.cache', '.qa', '.idea', '.vscode']);
 const problems = [];
 let checked = 0;
@@ -66,6 +66,31 @@ function inspect(name, data, links, label = name) {
       if (offset + 8 + size > data.length) { fail(label, 'invalid WebP chunk'); break; }
       offset += 8 + size + size % 2;
     }
+  } else if (extension === '.png') {
+    if (!data.subarray(0, 8).equals(Buffer.from('89504e470d0a1a0a', 'hex'))) {
+      fail(label, 'invalid PNG'); return;
+    }
+    let ended = false;
+    for (let offset = 8; offset < data.length;) {
+      if (offset + 12 > data.length) { fail(label, 'invalid PNG chunk'); break; }
+      const size = data.readUInt32BE(offset);
+      const kind = data.toString('ascii', offset + 4, offset + 8);
+      const end = offset + 12 + size;
+      if (end > data.length) { fail(label, 'invalid PNG chunk'); break; }
+      if (offset === 8 && (kind !== 'IHDR' || size !== 13)) fail(label, 'invalid PNG header');
+      if (['eXIf', 'tEXt', 'zTXt', 'iTXt'].includes(kind)) fail(label, 'image metadata needs review/removal');
+      // Preserve signed generation provenance while checking ancillary chunks for private text.
+      if (!['IHDR', 'IDAT', 'IEND', 'PLTE', 'tRNS'].includes(kind)) {
+        textIssues(`${label} (${kind})`, data.toString('utf8', offset + 8, offset + 8 + size), links);
+      }
+      offset = end;
+      if (kind === 'IEND') {
+        ended = true;
+        if (size !== 0 || offset !== data.length) fail(label, 'invalid PNG ending');
+        break;
+      }
+    }
+    if (!ended) fail(label, 'missing PNG ending');
   } else if (!binaryExtensions.has(extension)) {
     if (data.includes(0)) fail(label, 'unrecognized binary file needs manual review');
     else textIssues(label, approvedContent(name, data.toString('utf8')), links);
